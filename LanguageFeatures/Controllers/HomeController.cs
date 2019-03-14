@@ -17,8 +17,9 @@ namespace LanguageFeatures.Controllers
                 string category = p?.Category ?? "<no cat>";
                 bool inStock = p?.InStock ?? false;
 
-                results.Add(string.Format("Name: {0}, Price: {1}, Related: {2}, Category: {3}, In Stock: {4}",
-                    name, price, relatedName, category, inStock));
+                results.Add(
+                    $"Name: {name}, Price: {price}, Related: {relatedName}, Category: {category}, In Stock: {inStock}"
+                );
             }
             return View(results);
         }
