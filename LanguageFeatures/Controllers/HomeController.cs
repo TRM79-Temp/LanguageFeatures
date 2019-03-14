@@ -14,9 +14,11 @@ namespace LanguageFeatures.Controllers
                 string name = p?.Name ?? "<No Name>";
                 decimal? price = p?.Price ?? 0;
                 string relatedName = p?.Related?.Name ?? "<None>";
+                string category = p?.Category ?? "<no cat>";
+                bool inStock = p?.InStock ?? false;
 
-                results.Add(string.Format("Name: {0}, Price: {1}, Related: {2}",
-                    name, price, relatedName));
+                results.Add(string.Format("Name: {0}, Price: {1}, Related: {2}, Category: {3}, In Stock: {4}",
+                    name, price, relatedName, category, inStock));
             }
             return View(results);
         }

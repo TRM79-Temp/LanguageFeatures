@@ -6,6 +6,11 @@ namespace LanguageFeatures.Models
         public string Category { get; set; } = "Watersports";
         public decimal? Price { get; set; }
         public Product Related { get; set; }
+        public bool InStock { get; } = true;
+
+        public Product(bool stock = true) {
+            InStock = stock;
+        }
 
         public static Product[] GetProducts()
         {
@@ -15,7 +20,7 @@ namespace LanguageFeatures.Models
                 Price = 275M
             };
 
-            Product lifejacket = new Product {
+            Product lifejacket = new Product (false) {
                 Name = "Lifejacket", Price = 48.95M
             };
 
