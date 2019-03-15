@@ -4,7 +4,7 @@ namespace LanguageFeatures.Models
 {
     public static class MyExtensionMethods
     {
-        public static decimal TotalPrices (this IEnumerable<Product> products)
+        public static decimal TotalPrices(this IEnumerable<Product> products)
         {
             decimal total = 0;
             foreach (Product prod in products)
@@ -20,6 +20,18 @@ namespace LanguageFeatures.Models
             foreach (Product prod in productEnum)
             {
                 if ((prod?.Price ?? 0) >= minimumPrice)
+                {
+                    yield return prod;
+                }
+            }
+        }
+
+        public static IEnumerable<Product> FilterByName(
+            this IEnumerable<Product> productEnum, char firstLetter)
+        {
+            foreach (Product prod in productEnum)
+            {
+                if (prod?.Name?[0] == firstLetter)
                 {
                     yield return prod;
                 }

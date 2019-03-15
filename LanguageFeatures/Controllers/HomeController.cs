@@ -6,7 +6,7 @@ namespace LanguageFeatures.Controllers
 {
     public class HomeController : Controller
     {
-        public ViewResult Index ()
+        public ViewResult Index()
         {
             Product[] productArray = {
                 new Product { Name = "Kayak", Price = 275M },
@@ -15,9 +15,14 @@ namespace LanguageFeatures.Controllers
                 new Product { Name = "Corner flag", Price = 34.95M }
             };
 
-            decimal arrayTotal = productArray.FilterByPrice (20).TotalPrices ();
+            decimal priceFilterTotal = productArray.FilterByPrice(20).TotalPrices();
+            decimal nameFilterTotal = productArray.FilterByName('S').TotalPrices();
 
-            return View ("Index", new string[] { $"Array Total: {arrayTotal:C2}" });
+            return View("Index", new string[]
+            {
+                $"Price Total: {priceFilterTotal:C2}",
+                $"Name Total: {nameFilterTotal:C2}"
+            });
         }
     }
 }
